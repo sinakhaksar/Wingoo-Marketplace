@@ -1,0 +1,71 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Wingoo{% endblock %}
+
+
+{% block content %}
+    <style>
+        .container {
+            padding-left: 1rem;
+            padding-right: 1rem;
+
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #4a71b5;
+            border-radius: 12px; /* Adjust the value to change the roundness of the corners */
+            padding: 20px; /* Adjust the padding to control the content size within the container */
+        }
+
+        .title {
+            text-align: center;
+            font-size: xx-large;
+            font-weight: 600;
+            font-style: 'yekan';
+            margin-bottom: 2.5rem;
+        }
+        
+        .item img{
+            border-radius: 14px;
+            height: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .item-details{
+            text-align: center;
+            font-size: x-large;
+            font-family: 'Yekan';
+        }
+    </style>
+    
+    <div class="container">
+        <h2 class="title">جدیدترین محصولات</h2>
+        <div class="grid grid-cols-4 gap-4">
+            {% for item in items %}
+                <div class="item">
+                    <a href="#">
+                        <img src="{{ item.item_profile.url }}" alt="{{ item.name }}">
+                        <div class="item-details">
+                            <h2 >{{ item.name }}</h2>
+                            <p style="font-family: vasir;">قیمت: {{ item.price }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="container">
+        <h2 class="title">دسته بندی‌ها</h2>
+        <div class="grid grid-cols-4 gap-4">
+        {% for category in categories %}
+            <div class="item">
+                <a href="#">
+                    <div class="item-details">
+                        <h2 >{{ category.name }}</h2>
+                        <p style="font-family: vasir;">عدد: {{ category.items.count }}</p>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+{% endblock %}
