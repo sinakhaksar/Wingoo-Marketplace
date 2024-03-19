@@ -2,17 +2,15 @@
 
 {% block title %}Wingoo{% endblock %}
 
-
 {% block content %}
     <style>
-        .container {
-            padding-left: 1rem;
-            padding-right: 1rem;
-
+        .container, .container2 {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
             width: 100%;
             margin-left: auto;
             margin-right: auto;
-            background-color: #4a71b5;
+            background-color: #e6e6e6;
             border-radius: 12px; /* Adjust the value to change the roundness of the corners */
             padding: 20px; /* Adjust the padding to control the content size within the container */
         }
@@ -24,30 +22,30 @@
             font-style: 'yekan';
             margin-bottom: 2.5rem;
         }
-        
-        .item img{
+
+        .item img {
             border-radius: 14px;
             height: 60%;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .item-details{
+        .item-details {
             text-align: center;
             font-size: x-large;
             font-family: 'Yekan';
         }
     </style>
-    
+
     <div class="container">
         <h2 class="title">جدیدترین محصولات</h2>
-        <div class="grid grid-cols-4 gap-4">
+        <div class="grid grid-cols-{{ items.count }} gap-{{ items.count }}">
             {% for item in items %}
                 <div class="item">
-                    <a href="#">
+                    <a href="{% url 'item:detail' item.id %}">
                         <img src="{{ item.item_profile.url }}" alt="{{ item.name }}">
                         <div class="item-details">
-                            <h2 >{{ item.name }}</h2>
+                            <h2>{{ item.name }}</h2>
                             <p style="font-family: vasir;">قیمت: {{ item.price }}</p>
                         </div>
                     </a>
@@ -55,17 +53,20 @@
             {% endfor %}
         </div>
     </div>
+
+
     <div class="container">
         <h2 class="title">دسته بندی‌ها</h2>
-        <div class="grid grid-cols-4 gap-4">
-        {% for category in categories %}
-            <div class="item">
-                <a href="#">
-                    <div class="item-details">
-                        <h2 >{{ category.name }}</h2>
-                        <p style="font-family: vasir;">عدد: {{ category.items.count }}</p>
-                    </div>
-                </a>
-            </div>
+        <div class="grid grid-cols-{{categories.count}} gap-{{categories.count}}">
+            {% for category in categories %}
+                <div class="item">
+                    <a href="#">
+                        <ul class="item-details">
+                            <li>{{ category.name }}: {{ category.items.count }}</li>
+                        </ul>
+                    </a>
+                </div>
             {% endfor %}
+        </div>
+    </div>
 {% endblock %}
