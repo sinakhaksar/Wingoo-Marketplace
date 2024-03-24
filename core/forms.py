@@ -42,29 +42,3 @@ class SignupForm(UserCreationForm):
         'placeholder': 'ReEnter Password',
         'class': 'w-full py-4 px-6 rounded-xl max-auto'
     }))
-
-# class SignupForm(UserCreationForm):
-#     email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
-
-#     class Meta:
-#         model = User
-#         fields = ('username', 'email', 'password1', 'password2')
-
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-#         self.fields['username'].widget.attrs.update({
-#             'placeholder': 'Your Username',
-#             'class': 'w-full py-4 px-6 rounded-xl max-auto'
-#         })
-#         self.fields['email'].widget.attrs.update({
-#             'placeholder': 'Your Email',
-#             'class': 'w-full py-4 px-6 rounded-xl max-auto'
-#         })
-#         self.fields['password1'].widget.attrs.update({
-#             'placeholder': 'Your Password',
-#             'class': 'w-full py-4 px-6 rounded-xl max-auto'
-#         })
-#         self.fields['password2'].widget.attrs.update({
-#             'placeholder': 'Re-enter Password',
-#             'class': 'w-full py-4 px-6 rounded-xl max-auto'
-#         })
