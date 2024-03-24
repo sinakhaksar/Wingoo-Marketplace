@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from .forms import SignupForm
-
+from django.contrib.auth import login
+from item.models import Category, Item
 
 # Create your views here.
-from item.models import Category, Item
 
 
 def index(request):
@@ -23,9 +23,15 @@ def signup(request):
         form = SignupForm(request.POST)
 
         if form.is_valid():
-            form.save()
+            user=form.save()
+            login(request, user)
 
-            return redirect('/login/')
+            next_url = request.GET.get('next', None)
+            if next_url:
+                return redirect(next_url)
+            else:
+                return redirect('core:index')  # Redirect to a default page if 'next' parameter is not present
+
     else: 
         form = SignupForm()
 
