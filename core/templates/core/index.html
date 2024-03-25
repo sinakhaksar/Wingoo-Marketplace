@@ -39,14 +39,16 @@
 
     <div class="container">
         <h2 class="title">جدیدترین محصولات</h2>
-        <div class="grid grid-cols-{{ items.count }} gap-{{ items.count }}">
+
+        
+        <div class="grid grid-cols-5 gap-4 ">
             {% for item in items %}
                 <div class="item">
                     <a href="{% url 'item:detail' item.id %}">
                         <img src="{{ item.item_profile.url }}" alt="{{ item.name }}">
                         <div class="item-details">
                             <h2>{{ item.name }}</h2>
-                            <p style="font-family: vasir;">قیمت: {{ item.price }}</p>
+                            <p>قیمت: {{ item.price }}</p>
                         </div>
                     </a>
                 </div>
