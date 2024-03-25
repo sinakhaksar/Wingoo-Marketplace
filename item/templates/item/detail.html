@@ -25,31 +25,31 @@
         {% if request.user == item.created_by %}
             <div class="mt-6 p-6 bg-white rounded-xl">
                 <p>این محصول شماست</p>
-                <a href="{% url 'item:edit' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-green-500 text-white rounded-xl">ویرایش</a>
-                <a href="{% url 'item:delete' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl">حذف آگهی</a>
+                <a href="{% url 'item:edit' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-green-500 text-white rounded-xl shadow-md ">ویرایش</a>
+                <a href="{% url 'item:delete' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl shadow-md ">حذف آگهی</a>
             </div>
         {% else %}    
-            <a href="#" class="inline-block mt-6 px-6 py-3 text-lg font-bold text-white bg-teal-600 rounded-xl hover:bg-teal-800 ">اطلاعات تماس</a>
+            <a href="#" class="inline-block mt-6 px-6 py-3 text-lg font-bold text-white bg-teal-600 rounded-xl hover:bg-teal-800 shadow-md  ">اطلاعات تماس</a>
         {% endif %}
     </div>
 </div>
-
-<div class="container">
-    <h2 class="title">محصولات‌ مرتبط</h2>
-    <div class="grid grid-cols-3 gap-3">
-        {% for item in related_items %}
-            <div class="item">
-                <a href="{% url 'item:detail' item.id %}">
-                    <img src="{{ item.item_profile.url }}" alt="{{ item.name }}">
-                    <div class="item-details">
-                        <h2>{{ item.name }}</h2>
-                        <p style="font-family: vasir;">قیمت: {{ item.price }}</p>
-                    </div>
-                </a>
-            </div>
-        {% endfor %}
+{% if related_items.count != 0 %}
+    <div align="center"class="content-center">
+        <h2 class="text-xl text-center p-6">محصولات‌ مرتبط</h2>
+        <div class="grid grid-cols-4 gap-3 w-full ">
+            {% for item in related_items %}
+                <div class="item">
+                    <a href="{% url 'item:detail' item.id %}">
+                        <img src="{{ item.item_profile.url }}" alt="{{ item.name }}" class="rounded-t-xl ">
+                        <div class="bg-gray-200 rounded-b-xl">
+                            <h2 class="text-2xl text-center">{{ item.name }}</h2>
+                            <p class="text-lg text-center">قیمت: {{ item.price }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
     </div>
-</div>
-
+{% endif %}
 
 {% endblock %}
