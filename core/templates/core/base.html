@@ -67,7 +67,7 @@
                     <a href="{% url 'core:signup' %}?next={{ request.path|urlencode }}" class="px-2 py-3 text-lg font-bold bg-teal-500 text-white rounded-xl hover:bg-teal-700">عضویت</a>
                     <a href="{% url 'core:login' %}?next={{ request.path|urlencode }}" class="px-3 py-3 text-lg font-bold bg-green-500 text-white rounded-xl hover:bg-green-500">ورود</a>
             {% endif %}    
-            <a href="" class="text-lg font-bold p-3">گشتن</a>
+            <a href="{% url 'item:search' %}" class="text-lg font-bold p-3">گشتن</a>
             <a href="{% url 'item:new' %}" class="text-lg font-bold p-3 hover:text-green-500 ">آگهی جدید</a>
         </div>
     </nav>
