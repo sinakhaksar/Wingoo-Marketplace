@@ -22,7 +22,6 @@ Wingoo Marketplace is a test project designed to practice building a marketplace
 To run this project, ensure you have the following installed:
 
 - Python 3.8 or higher
-- Pillow 10.3.0 or higher
 
 ## Installation
 
@@ -100,4 +99,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For questions or suggestions, open an issue or contact me at [sinakhaksar3@gmail.com].
+For questions or suggestions, open an issue or contact me at sinakhaksar3@gmail.com .
